@@ -1,4 +1,4 @@
-# KK8 on GCP
+# GCP setup
 
 
 ## Requirements

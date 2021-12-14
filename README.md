@@ -1,16 +1,18 @@
 # KOKOPOPS
 
-Template for kubernetes infra as code on GKE
+cli and repository template for kubernetes iac on GKE.
 
 ## Cluster setup
 
-[GCP](gcp/README.md).
+[GCP](gcp/README.md)
 
-## kops usage
+## Instal
 
 ```sh
 sudo make install
 ```
+
+## Usage
 
 Use kops from this directory, it needs to lookup files in *cmd*
 
@@ -20,6 +22,11 @@ List commands
 kops commands
 ```
 
+shell in /cmd  are run using
+
+```sh
+kops deploy foo
+```
 
 ## Repo structure
 
@@ -27,19 +34,19 @@ kops commands
 
 Helm templates
 
-- *cmd*
+- */cmd*
 
 shell executed by `kops deploy [CMD]`
 Add as many *.sh* as you need.
 
 shell files require a line which reference the targeted kubernetes cluster
 
-- *data*
+- */data*
 
 Files required by cmd exec, helm values, kubernetes yaml files ...
 
 
-- *test*
+- */test*
 
 Tester c'est douter
 
@@ -60,8 +67,10 @@ Use Issuer or ClusterIssuer to issue certs.
 
 Issuers are referenced in Ingress resources:
 
-*cert-manager.io/issuer: public*
-*kubernetes.io/tls-acme: "true"**
+```yaml
+-cert-manager.io/issuer: public
+-kubernetes.io/tls-acme: "true"
+```
 
 ### LB
 
@@ -71,8 +80,9 @@ kops deploy lb
 
 ingress-controllers are referenced in *Ingress* resources:
 
-*kubernetes.io/ingress.class: public*
-
+```yaml
+-kubernetes.io/ingress.class: public
+```
 
 ### Monitoring / alerting
 
