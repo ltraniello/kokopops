@@ -1,0 +1,17 @@
+replicaCount: 1
+
+name: api1
+
+image:
+  name: eu.gcr.io/gcpProjId/api1:latest
+  pullPolicy: Always
+
+logLevel: "Info"
+
+database:
+  host: host
+  name: schema
+  login: login
+  pwd: pw
+
+resources: {}

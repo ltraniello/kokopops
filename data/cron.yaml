@@ -1,0 +1,17 @@
+replicaCount: 1
+
+name: cron1
+
+image:
+  name: eu.gcr.io/gcpProjId/cron1:latest
+  pullPolicy: Always
+
+logLevel: "Info"
+
+database:
+  host: host
+  name: schema
+  login: login
+  pwd: pw
+
+resources: {}

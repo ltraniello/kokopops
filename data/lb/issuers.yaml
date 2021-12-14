@@ -1,0 +1,29 @@
+apiVersion: cert-manager.io/v1alpha3
+kind: Issuer
+metadata:
+  name: letsencrypt-public
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: <email>
+    privateKeySecretRef:
+      name: letsencrypt-public
+    solvers:
+      - http01:
+          ingress:
+            class: public
+---
+apiVersion: cert-manager.io/v1alpha3
+kind: Issuer
+metadata:
+  name: letsencrypt-private
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: <email>
+    privateKeySecretRef:
+      name: letsencrypt-private
+    solvers:
+      - http01:
+          ingress:
+            class: private
